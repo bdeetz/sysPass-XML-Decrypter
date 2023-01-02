@@ -35,7 +35,11 @@ XML decrypter for [sysPass](https://github.com/nuxsmin/sysPass/).
 
  - Execute the script:
  ```
- ./decrypt.php <path-to-encrypted-xml> <xml-export-key> <master-syspass-key> <dest-file> [format]
+ # INITIAL SETUP OF ALIAS
+ echo "alias syspass-decrypt='docker run -u root -t --rm -v ${HOME}:/root/:rw syspass-decrypter/latest \"\$*\"'" >> ~/.bashrc
+ exec ${SHELL}
+
+ syspass-decrypter <path-to-encrypted-xml> <xml-export-key> <master-syspass-key> <dest-file> [format]
  ```
 
 Tested with PHP 7.0.15 and XML exported with sysPass 2.1.5.17041201.
